@@ -22,9 +22,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth','role:admin'])->group(function(){
-route::get('/admin/deshboard',[AdminController::class,'deshboard']);
+route::get('/admin/dashboard',[AdminController::class,'dashboard']);
 });
 
 Route::middleware(['auth','role:agent'])->group(function(){
-route::get('/agent/deshboard',[AgentController::class,'deshboard']);
+route::get('/agent/dashboard',[AgentController::class,'dashboard']);
 });
