@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +20,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth','role:admin'])->group(function(){
+route::get('/admin/deshboard',[AdminController::class,'deshboard']);
+});
+
+Route::middleware(['auth','role:agent'])->group(function(){
+route::get('/agent/deshboard',[AgentController::class,'deshboard']);
+});
